@@ -22,9 +22,7 @@ def test_config_validation():
     # Should have errors due to missing credentials file
     errors = config.validate()
     assert len(errors) > 0  # noqa: S101
-    assert any(  # noqa: S101
-        "Credentials file not found" in error for error in errors
-    )
+    assert any("Credentials file not found" in error for error in errors)  # noqa: S101
 
 
 def test_parse_dimensions():
