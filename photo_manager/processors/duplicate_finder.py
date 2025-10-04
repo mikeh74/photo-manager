@@ -122,8 +122,8 @@ class DuplicateFinder:
         return duplicate_groups
 
     def _calculate_file_hash(self, file_path: Path) -> str:
-        """Calculate MD5 hash of file content."""
-        hasher = hashlib.md5()
+        """Calculate SHA256 hash of file content."""
+        hasher = hashlib.sha256()
 
         with open(file_path, "rb") as f:
             for chunk in iter(lambda: f.read(8192), b""):

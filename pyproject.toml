@@ -160,15 +160,13 @@ select = [
     "I",   # isort
     "B",   # flake8-bugbear
     "C4",  # flake8-comprehensions
-    "UP",  # pyupgrade
     "ARG001", # unused-function-args
     "SIM",  # flake8-simplify
-    "TCH",  # flake8-type-checking
     "TID",  # flake8-tidy-imports
     "Q",    # flake8-quotes
-    "PL",   # pylint
     "PT",   # flake8-pytest-style
     "RUF",  # ruff-specific rules
+    "S",   # security-related issues
 ]
 ignore = [
     "B008",   # do not perform function calls in argument defaults

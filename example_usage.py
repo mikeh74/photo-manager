@@ -23,13 +23,11 @@ def main():
 
     # 1. List albums
     print("\n1. Listing first 5 albums:")
-    album_count = 0
-    for album in api.list_albums():
+    for album_count, album in enumerate(api.list_albums()):
         print(
             f"  • {album.get('title', 'Untitled')} ({album.get('mediaItemsCount', '?')} items)"  # noqa E501
         )
-        album_count += 1
-        if album_count >= 5:
+        if album_count >= 4:  # 0-indexed, so 4 means 5 items
             break
 
     # 2. Download a specific album (uncomment to use)

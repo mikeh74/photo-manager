@@ -43,7 +43,7 @@ class GooglePhotosAuth:
         if not force_refresh and self.token_file.exists():
             try:
                 with open(self.token_file, "rb") as token_file:
-                    self.credentials = pickle.load(token_file)
+                    self.credentials = pickle.load(token_file)  # noqa: S301
             except Exception as e:
                 print(f"Error loading saved token: {e}")
                 self.credentials = None

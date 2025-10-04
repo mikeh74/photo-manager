@@ -2,7 +2,8 @@
 """
 Setup verification script for Google Photos Manager.
 
-This script checks if all dependencies and requirements are properly configured.
+This script checks if all dependencies and requirements are properly
+configured.
 """
 
 from pathlib import Path
@@ -64,7 +65,7 @@ def check_ffmpeg():
     print("\n🎬 Checking FFmpeg...")
     try:
         result = subprocess.run(
-            ["ffmpeg", "-version"],
+            ["ffmpeg", "-version"],  # noqa: S607
             capture_output=True,
             text=True,
             timeout=10,
@@ -119,7 +120,7 @@ def check_cli():
     """Check if CLI is working."""
     print("\n⚡ Checking CLI functionality...")
     try:
-        result = subprocess.run(
+        result = subprocess.run(  # noqa: S603
             [sys.executable, "-m", "photo_manager", "--help"],
             capture_output=True,
             text=True,
@@ -164,7 +165,7 @@ def check_configuration():
 
     # Check if CLI config works
     try:
-        result = subprocess.run(
+        result = subprocess.run(  # noqa: S603
             [sys.executable, "-m", "photo_manager", "config-info"],
             capture_output=True,
             text=True,

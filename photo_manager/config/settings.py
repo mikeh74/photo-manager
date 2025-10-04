@@ -107,7 +107,7 @@ class Config:
             errors.append(f"Credentials file not found: {self.credentials_file}")
 
         # Validate quality setting
-        if not 1 <= self.optimize_quality <= 100:  # noqa PLR2004
+        if not 1 <= self.optimize_quality <= 100:
             errors.append("OPTIMIZE_QUALITY must be between 1 and 100")
 
         # Validate dimensions

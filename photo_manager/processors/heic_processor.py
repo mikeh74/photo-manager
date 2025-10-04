@@ -116,7 +116,7 @@ class HEICProcessor:
                 str(video_path),
             ]
 
-            result = subprocess.run(
+            result = subprocess.run(  # noqa: S603
                 cmd, check=False, capture_output=True, text=True, timeout=60
             )
 
@@ -155,14 +155,14 @@ class HEICProcessor:
                 str(heic_path),
             ]
 
-            result = subprocess.run(
+            result = subprocess.run(  # noqa: S603
                 cmd, check=False, capture_output=True, text=True, timeout=30
             )
 
             if result.returncode != 0:
                 return False
 
-            import json  # noqa PLC0415 - local import to avoid top-level dependency
+            import json
 
             probe_data = json.loads(result.stdout)
             streams = probe_data.get("streams", [])
@@ -290,7 +290,9 @@ class HEICProcessor:
                     info["image_size"] = img.size
                     info["metadata"] = dict(img.getexif())
             except Exception:
-                pass
+                logger.debug(
+                    f"Could not extract image metadata from {heic_path}",
+                )
 
         except Exception as e:
             logger.error(f"Error getting info for {heic_path}: {e}")

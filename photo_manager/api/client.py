@@ -2,10 +2,11 @@
 Google Photos API client implementation.
 """
 
+from collections.abc import Generator
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, Generator, List, Optional
+from typing import Any, Dict, List, Optional
 
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -198,7 +199,7 @@ class GooglePhotosAPI:
             # Download the file
             download_url = f"{base_url}=d"  # =d parameter for download
 
-            response = requests.get(download_url, stream=True)
+            response = requests.get(download_url, stream=True, timeout=60)
             response.raise_for_status()
 
             # Write file in chunks
