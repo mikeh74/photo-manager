@@ -1,0 +1,270 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "google-photos-manager"
+version = "1.0.0"
+description = "A Python application for managing your Google Photos library with automation features for HEIC processing and batch operations"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Photo Manager", email = "contact@example.com"},
+]
+maintainers = [
+    {name = "Photo Manager", email = "contact@example.com"},
+]
+keywords = [
+    "google-photos",
+    "heic",
+    "photo-management",
+    "image-processing",
+    "automation",
+    "live-photos",
+    "duplicate-detection",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: System :: Archiving",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.8"
+dependencies = [
+    # Google Photos API
+    "google-auth>=2.23.0",
+    "google-auth-oauthlib>=1.1.0",
+    "google-auth-httplib2>=0.1.1",
+    "google-api-python-client>=2.100.0",
+
+    # Image/Video Processing
+    "Pillow>=10.0.0",
+    "pillow-heif>=0.13.0",
+    "opencv-python>=4.8.0",
+    "ffmpeg-python>=0.2.0",
+
+    # File handling and utilities
+    "pathlib2>=2.3.0",
+    "python-magic>=0.4.27",
+    "tqdm>=4.65.0",
+
+    # Configuration and logging
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.0",
+    "click>=8.1.0",
+
+    # Data handling
+    "pandas>=2.0.0",
+    "exifread>=3.0.0",
+    "requests>=2.31.0",
+    "imagehash>=4.3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-mock>=3.11.0",
+    "pytest-cov>=4.1.0",
+    "pytest-xdist>=3.3.0",
+    "ruff>=0.1.0",
+    "mypy>=1.5.0",
+    "pre-commit>=3.4.0",
+    "types-requests>=2.31.0",
+    "types-PyYAML>=6.0.0",
+]
+test = [
+    "pytest>=7.4.0",
+    "pytest-mock>=3.11.0",
+    "pytest-cov>=4.1.0",
+    "pytest-xdist>=3.3.0",
+]
+docs = [
+    "mkdocs>=1.5.0",
+    "mkdocs-material>=9.2.0",
+    "mkdocstrings[python]>=0.22.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/photo-manager"
+Documentation = "https://github.com/yourusername/photo-manager#readme"
+Repository = "https://github.com/yourusername/photo-manager"
+Issues = "https://github.com/yourusername/photo-manager/issues"
+Changelog = "https://github.com/yourusername/photo-manager/releases"
+
+[project.scripts]
+photo-manager = "photo_manager.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["photo_manager*"]
+
+[tool.setuptools.package-data]
+photo_manager = ["py.typed"]
+
+# Ruff configuration
+[tool.ruff]
+target-version = "py39"
+line-length = 88
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+    "ARG001", # unused-function-args
+    "SIM",  # flake8-simplify
+    "TCH",  # flake8-type-checking
+    "TID",  # flake8-tidy-imports
+    "Q",    # flake8-quotes
+    "PL",   # pylint
+    "PT",   # flake8-pytest-style
+    "RUF",  # ruff-specific rules
+]
+ignore = [
+    "B008",   # do not perform function calls in argument defaults
+    "C901",   # too complex
+    "PLR0913", # too many arguments to function call
+    "PLR0915", # too many statements
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 12
+
+[tool.ruff.lint.pep8-naming]
+classmethod-decorators = ["classmethod"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["photo_manager"]
+force-sort-within-sections = true
+
+# MyPy configuration
+[tool.mypy]
+python_version = "3.8"
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_untyped_decorators = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+no_implicit_optional = true
+show_error_codes = true
+strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = [
+    "google.*",
+    "googleapiclient.*",
+    "PIL.*",
+    "pillow_heif.*",
+    "cv2.*",
+    "ffmpeg.*",
+    "magic.*",
+    "pandas.*",
+    "exifread.*",
+    "imagehash.*",
+]
+ignore_missing_imports = true
+
+# Pytest configuration
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--cov=photo_manager",
+    "--cov-report=html",
+    "--cov-report=term-missing",
+    "--cov-fail-under=80",
+]
+testpaths = ["tests"]
+filterwarnings = [
+    "error",
+    "ignore::UserWarning",
+    "ignore::DeprecationWarning",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+
+# Coverage configuration
+[tool.coverage.run]
+source = ["photo_manager"]
+omit = [
+    "*/tests/*",
+    "*/__pycache__/*",
+    "*/.*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+
+[tool.coverage.html]
+directory = "htmlcov"
