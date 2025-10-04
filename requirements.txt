@@ -25,5 +25,5 @@ pytest-mock==3.12.0
 # Configuration and logging
 python-dotenv==1.0.0
 python-magic==0.4.27
-pyyaml==6.0.1
+pyyaml==6.0.3
 tqdm==4.66.1
