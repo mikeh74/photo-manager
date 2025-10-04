@@ -4,12 +4,11 @@ Logging utilities for the photo manager.
 
 import logging
 import sys
-from typing import Optional
 
 from photo_manager.config import config
 
 
-def setup_logging(log_level: Optional[str] = None) -> logging.Logger:
+def setup_logging(log_level: str | None = None) -> logging.Logger:
     """
     Set up logging configuration.
 

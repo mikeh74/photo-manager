@@ -3,7 +3,6 @@ Google Photos API authentication handler.
 """
 
 import pickle
-from typing import Optional
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -17,7 +16,7 @@ class GooglePhotosAuth:
 
     def __init__(self):
         """Initialize the authentication handler."""
-        self.credentials: Optional[Credentials] = None
+        self.credentials: Credentials | None = None
         self.scopes = config.google_photos_scopes
         self.credentials_file = config.credentials_file
         self.token_file = config.token_file
@@ -136,7 +135,7 @@ class GooglePhotosAuth:
         """Check if user is currently authenticated."""
         return self.credentials is not None and self.credentials.valid
 
-    def get_user_info(self) -> Optional[dict]:
+    def get_user_info(self) -> dict | None:
         """Get basic user information if available."""
         if not self.is_authenticated():
             return None

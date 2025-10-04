@@ -3,7 +3,6 @@ Image optimization utilities.
 """
 
 from pathlib import Path
-from typing import Optional
 
 from PIL import Image, ImageOps
 
@@ -22,9 +21,7 @@ class ImageOptimizer:
         self.max_size = config.max_image_size
         self.preserve_metadata = config.preserve_metadata
 
-    def optimize_image(
-        self, input_path: Path, output_path: Optional[Path] = None
-    ) -> dict:
+    def optimize_image(self, input_path: Path, output_path: Path | None = None) -> dict:
         """
         Optimize a single image file.
 
@@ -98,7 +95,7 @@ class ImageOptimizer:
         return result
 
     def optimize_directory(
-        self, input_dir: Path, output_dir: Optional[Path] = None
+        self, input_dir: Path, output_dir: Path | None = None
     ) -> list[dict]:
         """
         Optimize all images in a directory.

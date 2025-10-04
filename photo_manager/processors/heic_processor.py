@@ -4,7 +4,6 @@ HEIC file processor for extracting videos and converting images.
 
 from pathlib import Path
 import subprocess
-from typing import Optional
 
 from PIL import Image
 from pillow_heif import register_heif_opener
@@ -83,7 +82,7 @@ class HEICProcessor:
 
         return results
 
-    def _extract_video(self, heic_path: Path, output_dir: Path) -> Optional[Path]:
+    def _extract_video(self, heic_path: Path, output_dir: Path) -> Path | None:
         """
         Extract video component from HEIC file using FFmpeg.
 
@@ -176,7 +175,7 @@ class HEICProcessor:
         except Exception:
             return False
 
-    def _convert_image(self, heic_path: Path, output_dir: Path) -> Optional[Path]:
+    def _convert_image(self, heic_path: Path, output_dir: Path) -> Path | None:
         """
         Convert HEIC image to specified format.
 

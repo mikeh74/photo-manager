@@ -6,7 +6,7 @@ from collections.abc import Generator
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -20,7 +20,7 @@ from photo_manager.config import config
 class GooglePhotosAPI:
     """Google Photos API client for managing photo library."""
 
-    def __init__(self, auth_handler: Optional[GooglePhotosAuth] = None):
+    def __init__(self, auth_handler: GooglePhotosAuth | None = None):
         """
         Initialize the Google Photos API client.
 
@@ -79,7 +79,7 @@ class GooglePhotosAPI:
                 print(f"Error listing albums: {e}")
                 break
 
-    def get_album_by_name(self, album_name: str) -> Optional[dict[str, Any]]:
+    def get_album_by_name(self, album_name: str) -> dict[str, Any] | None:
         """
         Get album by name.
 
@@ -95,7 +95,7 @@ class GooglePhotosAPI:
         return None
 
     def list_media_items(
-        self, album_id: Optional[str] = None, page_size: int = 100
+        self, album_id: str | None = None, page_size: int = 100
     ) -> Generator[dict[str, Any], None, None]:
         """
         List media items from library or specific album.
@@ -144,7 +144,7 @@ class GooglePhotosAPI:
         media_item: dict[str, Any],
         download_path: Path,
         preserve_structure: bool = True,
-    ) -> Optional[Path]:
+    ) -> Path | None:
         """
         Download a single media item.
 
@@ -214,7 +214,7 @@ class GooglePhotosAPI:
             return None
 
     def download_album(
-        self, album_name: str, download_path: Path, max_workers: Optional[int] = None
+        self, album_name: str, download_path: Path, max_workers: int | None = None
     ) -> list[Path]:
         """
         Download all photos from an album.
@@ -281,7 +281,7 @@ class GooglePhotosAPI:
         print(f"Downloaded {len(downloaded_files)} files to {album_path}")
         return downloaded_files
 
-    def get_media_item_by_id(self, item_id: str) -> Optional[dict[str, Any]]:
+    def get_media_item_by_id(self, item_id: str) -> dict[str, Any] | None:
         """
         Get a specific media item by ID.
 
