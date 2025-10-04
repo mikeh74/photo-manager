@@ -7,7 +7,6 @@ from collections import defaultdict
 import contextlib
 import hashlib
 from pathlib import Path
-from typing import Dict, List
 
 import imagehash
 from PIL import Image
@@ -35,7 +34,7 @@ class DuplicateFinder:
 
     def find_duplicates(
         self, directory: Path, method: str = "hash"
-    ) -> List[List[Path]]:
+    ) -> list[list[Path]]:
         """
         Find duplicate images in a directory.
 
@@ -67,7 +66,7 @@ class DuplicateFinder:
         else:
             raise ValueError(f"Unknown method: {method}")
 
-    def _find_image_files(self, directory: Path) -> List[Path]:
+    def _find_image_files(self, directory: Path) -> list[Path]:
         """Find all image files in directory recursively."""
         image_files = []
 
@@ -80,7 +79,7 @@ class DuplicateFinder:
 
         return image_files
 
-    def _find_duplicates_by_hash(self, image_files: List[Path]) -> List[List[Path]]:
+    def _find_duplicates_by_hash(self, image_files: list[Path]) -> list[list[Path]]:
         """Find duplicates using file hash (exact matches)."""
         hash_groups = defaultdict(list)
 
@@ -98,8 +97,8 @@ class DuplicateFinder:
         return duplicate_groups
 
     def _find_duplicates_by_perceptual_hash(
-        self, image_files: List[Path]
-    ) -> List[List[Path]]:
+        self, image_files: list[Path]
+    ) -> list[list[Path]]:
         """Find duplicates using perceptual hashing (similar images)."""
         hash_groups = defaultdict(list)
 
@@ -149,7 +148,7 @@ class DuplicateFinder:
 
     def find_similar_images(
         self, directory: Path, threshold: int = 5
-    ) -> List[List[Path]]:
+    ) -> list[list[Path]]:
         """
         Find similar images using perceptual hashing with hamming distance.
 
@@ -202,7 +201,7 @@ class DuplicateFinder:
         logger.info(f"Found {len(similar_groups)} groups of similar images")
         return similar_groups
 
-    def get_duplicate_stats(self, duplicate_groups: List[List[Path]]) -> Dict[str, int]:
+    def get_duplicate_stats(self, duplicate_groups: list[list[Path]]) -> dict[str, int]:
         """Get statistics about found duplicates."""
         total_files = sum(len(group) for group in duplicate_groups)
         total_duplicates = total_files - len(

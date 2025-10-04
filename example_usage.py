@@ -5,7 +5,11 @@ Example script showing how to use the Google Photos Manager programmatically.
 from pathlib import Path
 
 from photo_manager import GooglePhotosAPI, GooglePhotosAuth
-from photo_manager.processors import DuplicateFinder, HEICProcessor, ImageOptimizer
+from photo_manager.processors import (
+    DuplicateFinder,
+    HEICProcessor,
+    ImageOptimizer,
+)
 
 
 def main():
@@ -70,7 +74,8 @@ def main():
         if duplicates:
             stats = duplicate_finder.get_duplicate_stats(duplicates)
             print(
-                f"Found {stats['total_groups']} groups with {stats['total_duplicates']} duplicates"  # noqa E501
+                f"Found {stats['total_groups']} groups with "
+                f"{stats['total_duplicates']} duplicates"
             )
             print(f"Potential space savings: {stats['total_size_mb']:.1f} MB")
         else:

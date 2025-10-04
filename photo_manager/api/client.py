@@ -6,7 +6,7 @@ from collections.abc import Generator
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Optional
 
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -42,7 +42,7 @@ class GooglePhotosAPI:
     def list_albums(
         self, page_size: int = 50
     ) -> Generator[
-        Dict[str, Any],
+        dict[str, Any],
         None,
         None,
     ]:
@@ -79,7 +79,7 @@ class GooglePhotosAPI:
                 print(f"Error listing albums: {e}")
                 break
 
-    def get_album_by_name(self, album_name: str) -> Optional[Dict[str, Any]]:
+    def get_album_by_name(self, album_name: str) -> Optional[dict[str, Any]]:
         """
         Get album by name.
 
@@ -96,7 +96,7 @@ class GooglePhotosAPI:
 
     def list_media_items(
         self, album_id: Optional[str] = None, page_size: int = 100
-    ) -> Generator[Dict[str, Any], None, None]:
+    ) -> Generator[dict[str, Any], None, None]:
         """
         List media items from library or specific album.
 
@@ -141,7 +141,7 @@ class GooglePhotosAPI:
 
     def download_media_item(
         self,
-        media_item: Dict[str, Any],
+        media_item: dict[str, Any],
         download_path: Path,
         preserve_structure: bool = True,
     ) -> Optional[Path]:
@@ -215,7 +215,7 @@ class GooglePhotosAPI:
 
     def download_album(
         self, album_name: str, download_path: Path, max_workers: Optional[int] = None
-    ) -> List[Path]:
+    ) -> list[Path]:
         """
         Download all photos from an album.
 
@@ -281,7 +281,7 @@ class GooglePhotosAPI:
         print(f"Downloaded {len(downloaded_files)} files to {album_path}")
         return downloaded_files
 
-    def get_media_item_by_id(self, item_id: str) -> Optional[Dict[str, Any]]:
+    def get_media_item_by_id(self, item_id: str) -> Optional[dict[str, Any]]:
         """
         Get a specific media item by ID.
 
@@ -299,8 +299,8 @@ class GooglePhotosAPI:
             return None
 
     def search_media_items(
-        self, filters: Dict[str, Any], page_size: int = 100
-    ) -> Generator[Dict[str, Any], None, None]:
+        self, filters: dict[str, Any], page_size: int = 100
+    ) -> Generator[dict[str, Any], None, None]:
         """
         Search media items with filters.
 

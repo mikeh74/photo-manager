@@ -4,7 +4,6 @@ Configuration settings for Google Photos Manager.
 
 import os
 from pathlib import Path
-from typing import List
 
 from dotenv import load_dotenv
 
@@ -65,7 +64,7 @@ class Config:
         self.use_threading = os.getenv("USE_THREADING", "true").lower() == "true"
         self.max_workers = int(os.getenv("MAX_WORKERS", "4"))
 
-    def _get_list_env(self, key: str, default: List[str]) -> List[str]:
+    def _get_list_env(self, key: str, default: list[str]) -> list[str]:
         """Get a list from environment variable."""
         value = os.getenv(key)
         if value:
@@ -98,7 +97,7 @@ class Config:
         for directory in directories:
             Path(directory).mkdir(parents=True, exist_ok=True)
 
-    def validate(self) -> List[str]:
+    def validate(self) -> list[str]:
         """Validate configuration and return list of errors."""
         errors = []
 

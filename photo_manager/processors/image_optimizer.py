@@ -3,7 +3,7 @@ Image optimization utilities.
 """
 
 from pathlib import Path
-from typing import List, Optional
+from typing import Optional
 
 from PIL import Image, ImageOps
 
@@ -99,7 +99,7 @@ class ImageOptimizer:
 
     def optimize_directory(
         self, input_dir: Path, output_dir: Optional[Path] = None
-    ) -> List[dict]:
+    ) -> list[dict]:
         """
         Optimize all images in a directory.
 

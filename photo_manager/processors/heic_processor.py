@@ -4,7 +4,7 @@ HEIC file processor for extracting videos and converting images.
 
 from pathlib import Path
 import subprocess
-from typing import List, Optional
+from typing import Optional
 
 from PIL import Image
 from pillow_heif import register_heif_opener
@@ -214,7 +214,7 @@ class HEICProcessor:
             logger.error(f"Error converting image {heic_path}: {e}")
             return None
 
-    def process_directory(self, input_dir: Path, output_dir: Path) -> List[dict]:
+    def process_directory(self, input_dir: Path, output_dir: Path) -> list[dict]:
         """
         Process all HEIC files in a directory.
 

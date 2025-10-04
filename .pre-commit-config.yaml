@@ -71,7 +71,7 @@ repos:
     rev: v3.20.0
     hooks:
       - id: pyupgrade
-        args: [--py38-plus]
+        args: [--py39-plus]
 
   # Check for TODO/FIXME comments
   - repo: https://github.com/pre-commit/pygrep-hooks

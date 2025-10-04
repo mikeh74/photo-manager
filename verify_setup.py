@@ -22,7 +22,8 @@ def check_python_version():
         return True
     else:
         print(
-            f"   ❌ Python {version.major}.{version.minor}.{version.micro} (requires 3.8+)"  # noqa E501
+            f"   ❌ Python {version.major}.{version.minor}.{version.micro} "
+            "(requires 3.8+)"
         )
         return False
 
@@ -209,7 +210,8 @@ def main():
         print("   2. Run: python -m photo_manager auth")
         print("   3. Start using: python -m photo_manager albums list")
     else:
-        print(f"\n⚠️  {total - passed} checks failed. Please address the issues above.")
+        print(f"\n⚠️  {total - passed} checks failed.")
+        print("Please address the issues above.")
 
     return passed == total
 

@@ -5,7 +5,6 @@ File utility functions.
 import os
 from pathlib import Path
 import shutil
-from typing import List
 
 
 def ensure_directory(path: Path) -> Path:
@@ -63,7 +62,7 @@ def safe_copy(src: Path, dst: Path, overwrite: bool = False) -> bool:
         return False
 
 
-def find_files_by_extension(directory: Path, extensions: List[str]) -> List[Path]:
+def find_files_by_extension(directory: Path, extensions: list[str]) -> list[Path]:
     """
     Find all files with specified extensions in a directory.
 
