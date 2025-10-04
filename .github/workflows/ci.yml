@@ -37,7 +37,7 @@ jobs:
         pip install -e ".[dev,test]"
 
     - name: Run pre-commit
-      uses: pre-commit/action@v3.0.0
+      uses: pre-commit/action@v3.0.1
       if: matrix.python-version == env.PYTHON_VERSION
 
     - name: Run tests
