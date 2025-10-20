@@ -1,7 +1,7 @@
 click==8.1.8
 exifread==3.0.0
 ffmpeg-python==0.2.0
-google-api-python-client==2.184.0
+google-api-python-client==2.185.0
 # Google Photos API
 google-auth==2.41.1
 google-auth-httplib2==0.1.1
