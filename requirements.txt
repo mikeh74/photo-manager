@@ -5,7 +5,7 @@ google-api-python-client==2.187.0
 # Google Photos API
 google-auth==2.48.0
 google-auth-httplib2==0.3.0
-google-auth-oauthlib==1.2.3
+google-auth-oauthlib==1.2.4
 opencv-python==4.13.0.92
 
 # Data handling
