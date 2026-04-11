@@ -93,11 +93,11 @@ docs = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/photo-manager"
-Documentation = "https://github.com/yourusername/photo-manager#readme"
-Repository = "https://github.com/yourusername/photo-manager"
-Issues = "https://github.com/yourusername/photo-manager/issues"
-Changelog = "https://github.com/yourusername/photo-manager/releases"
+Homepage = "https://github.com/mikeh74/photo-manager"
+Documentation = "https://github.com/mikeh74/photo-manager#readme"
+Repository = "https://github.com/mikeh74/photo-manager"
+Issues = "https://github.com/mikeh74/photo-manager/issues"
+Changelog = "https://github.com/mikeh74/photo-manager/releases"
 
 [project.scripts]
 photo-manager = "photo_manager.cli:main"
