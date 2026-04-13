@@ -64,7 +64,7 @@ dependencies = [
     # Data handling
     "pandas>=2.0.0",
     "exifread>=3.0.0",
-    "requests>=2.31.0",
+    "requests>=2.33.1",
     "imagehash>=4.3.0",
 ]
 
